@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- status log4j2内部日志级别 -->
+<Configuration status="WARN">
+    <Properties>
+        <Property name="loggingFile">netty-test</Property>
+        <Property name="loggingPath">/www/data/logs/netty-test</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="STDOUT" target="system_out">
+            <PatternLayout charset="UTF-8">
+                <pattern>%d{ISO8601}{GMT+8} %highlight{%p} %style{%c{1.} [%t] %m}{bold,green}%n</pattern>
+            </PatternLayout>
+        </Console>
+        <RollingRandomAccessFile
+                name="RollingRandomAccessFile"
+                fileName="${loggingPath}/${loggingFile}.log"
+                filePattern="${loggingPath}/$${date:yyyy-MM}/${loggingFile}-%d{yyyy-MM-dd}-%i.log.gz"
+                immediateFlush="false" append="true" bufferSize="512">
+            <PatternLayout charset="UTF-8">
+                <Pattern>%d{ISO8601}{GMT+8} %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="512 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+
+    </Appenders>
+    <!-- level="${env:LOGGING_LEVEL_:-DEBUG}" will override spring-boot's logging.level.${loggerName}: ${logLevel} -->
+    <Loggers>
+        <Logger name="com.pancm.client" level="INFO" additivity="false">
+            <AppenderRef ref="RollingRandomAccessFile"/>
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+        <Root includeLocation="false" level="${env:ROOT_LOGGING_LEVEL_:-INFO}">
+            <AppenderRef ref="RollingRandomAccessFile"/>
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

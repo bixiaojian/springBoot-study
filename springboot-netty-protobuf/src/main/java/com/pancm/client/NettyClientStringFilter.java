@@ -1,20 +1,23 @@
 package com.pancm.client;
 
-import com.pancm.protobuf.KLine;
 import com.pancm.protobuf.Snapshot;
-import com.pancm.protobuf.UserInfo.UserMsg;
+import com.pancm.util.NettyConstants;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -27,10 +30,10 @@ import java.util.concurrent.TimeUnit;
  * @date 2017年10月8日
  */
 @Component
-public class NettyClientFilter extends ChannelInitializer<SocketChannel> {
+public class NettyClientStringFilter extends ChannelInitializer<SocketChannel> {
 
   @Autowired
-  private NettyClientHandler nettyClientHandler;
+  private NettyClientStringHandler nettyClientHandler;
 
 
   @Override
@@ -39,14 +42,11 @@ public class NettyClientFilter extends ChannelInitializer<SocketChannel> {
     /*
      * 解码和编码，应和服务端一致
      * */
-    //入参说明: 读超时时间、写超时时间、所有类型的超时时间、时间格式
-    ph.addLast(new IdleStateHandler(0, 4, 0, TimeUnit.SECONDS));
-
-    //传输的协议 Protobuf
-    ph.addLast(new ProtobufVarint32FrameDecoder());
-    ph.addLast(new ProtobufDecoder(Snapshot.SnapshotPro.getDefaultInstance()));
-    ph.addLast(new ProtobufVarint32LengthFieldPrepender());
-    ph.addLast(new ProtobufEncoder());
+    ph.addLast(new StringEncoder());
+    ByteBuf buf = Unpooled.copiedBuffer(NettyConstants.MSG_SEPARATOR.getBytes());
+    ph.addLast(new DelimiterBasedFrameDecoder(1024,buf));
+    ph.addLast(new StringDecoder());
+    ph.addLast(new IdleStateHandler(60 * 10, 60 * 5, 60 * 10, TimeUnit.SECONDS));
 
     //业务逻辑实现类
     ph.addLast("nettyClientHandler", nettyClientHandler);

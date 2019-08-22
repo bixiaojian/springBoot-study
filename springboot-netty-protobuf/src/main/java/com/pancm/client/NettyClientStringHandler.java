@@ -1,13 +1,7 @@
 package com.pancm.client;
 
-import com.google.gson.Gson;
-
-import com.pancm.protobuf.KLine;
-import com.pancm.protobuf.KLine.KLineCache;
 import com.pancm.protobuf.Snapshot;
-import com.pancm.protobuf.UserInfo;
 import com.pancm.protobuf.UserInfo.UserMsg;
-import com.pancm.util.DateUtil;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelHandler;
@@ -21,7 +15,6 @@ import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -34,9 +27,9 @@ import java.util.Date;
  * @date 2017年10月8日
  */
 @Slf4j
-@Service("nettyClientHandler")
+@Service("nettyClientStringHandler")
 @ChannelHandler.Sharable
-public class NettyClientHandler extends ChannelInboundHandlerAdapter {
+public class NettyClientStringHandler extends ChannelInboundHandlerAdapter {
 
   @Autowired
   private NettyClient nettyClient;
@@ -77,8 +70,8 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     if (obj instanceof IdleStateEvent) {
       IdleStateEvent event = (IdleStateEvent) obj;
       if (IdleState.WRITER_IDLE.equals(event.state())) { // 如果写通道处于空闲状态,就发送心跳命令
-        UserMsg.Builder userState = UserMsg.newBuilder().setState(2);
-        ctx.channel().writeAndFlush(userState);
+//        UserMsg.Builder userState = UserMsg.newBuilder().setState(2);
+        ctx.channel().writeAndFlush("ping server");
         fcount++;
       }
     }
@@ -89,27 +82,16 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
    */
   @Override
   public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-    // 如果不是protobuf类型的数据
-    if (!(msg instanceof Snapshot.SnapshotPro)) {
-      System.out.println("未知数据!" + msg);
-      return;
-    }
+
     try {
 
-      // 得到protobuf的数据
-      Snapshot.SnapshotPro snapshotPro = (Snapshot.SnapshotPro) msg;
-      // 进行相应的业务处理。。。
-      // 这里就从简了，只是打印而已
-//      System.out.println(
-//          "客户端接受到的用户信息: " + new Gson().toJson(kLineCache));
+      String msgStr = (String) msg;
+      String[] strs = msgStr.split(",");
+
       rcount++;
-      log.info("次数：{}，发送耗时：{} ， cur : {}", rcount, (System.currentTimeMillis() - snapshotPro.getTimestamp()),
+      log.info("次数：{}，发送耗时：{} ， cur : {}", rcount, (System.currentTimeMillis() - Long.valueOf(strs[0])),
           System.currentTimeMillis());
 
-      // 这里返回一个已经接受到数据的状态
-//      UserMsg.Builder userState = UserMsg.newBuilder().setState(1);
-//      ctx.writeAndFlush(userState);
-//      System.out.println("成功发送给服务端!");
     } catch (Exception e) {
       e.printStackTrace();
     } finally {

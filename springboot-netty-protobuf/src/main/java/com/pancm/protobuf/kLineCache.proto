@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_package = "com.pancm.protobuf";
+option java_outer_classname = "KLine";
+
+// TODO 使用proto定义的规则,生成java类以及PO类以及EPL的event
+message KLineCache {
+    //    string id = 1;
+    string name = 2; // 证券名称
+    string code = 3; // 证券代码
+    int32 period = 4; // 周期类型
+    int32 date = 5; // 起始日期
+    int32 time = 6;
+    int32 startDate = 7; // 开始日期
+    int32 startMin = 8; // 开始分钟
+    int64 open = 9; // 开盘价
+    int64 high = 10; // 最高价
+    int64 low = 11; // 最低价
+    int64 close = 12; // 收盘价
+    int64 closeChange = 13; // 收盘涨跌
+    int64 closeChangeRate = 14; // 收盘涨跌幅
+    int64 settlement = 15; // 结算价
+    int64 amount = 16; // 持仓量
+    int64 amountChange = 17; // 持仓量涨跌
+    int64 businessAmount = 18; // 成交量(总手)
+    int64 businessAmountChange = 19; // 成交涨跌
+    int64 businessBalance = 20; // 成交额
+    int64 turnoverRatio = 21; // 换手率
+    int64 barTime = 22; //barTime
+    string market = 23; //barTime
+    int64 sumToEndBusinessAmount = 24; //截止当前bar结束的成交量，计算成交量用
+    int64 sumToEndBusinessBalance = 25; //截止当前bar结束的成交额，计算成交额用
+    int64 lastClose = 26; //上根bar的close;
+    int64 periodTime = 27; // 年k periodTime=yyyy  月k periodTime=yyyyMM 周K periodTime=yyyyMMww
+    // 最新bar的修改时间.
+    int64 updateTime = 28;
+
+    //2017-11-2 add property
+    float rangePCT = 29; //区间振幅
+    float rangeOfPrice = 30; //区间绝对振幅
+    int64 accuHighPrice = 31; //至今最高价
+    int64 accuLowPrice = 32; //至今最低价
+    int64 accuBargainAmount = 33; //至今成交量
+    int64 accuBargainSum = 34; //至今成交额
+    int64 changeOI = 35; //价格变化
+    int64 avg = 36; //区间均价
+
+    int32 tradePeriodNums = 37; //交易周期数
+    int32 tradingDate = 38; //交易日
+}

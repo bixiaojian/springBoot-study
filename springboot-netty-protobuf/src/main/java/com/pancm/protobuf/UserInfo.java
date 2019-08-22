@@ -4,7 +4,43 @@
 package com.pancm.protobuf;
 
 public final class UserInfo {
-  private UserInfo() {}
+  private static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_UserMsg_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UserMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+
+  static {
+    java.lang.String[] descriptorData = {
+        "\n\nUser.proto\"?\n\007UserMsg\022\n\n\002id\030\001 \001(\005\022\014\n\004n" +
+            "ame\030\002 \001(\t\022\013\n\003age\030\003 \001(\005\022\r\n\005state\030\004 \001(\005B\036\n" +
+            "\022com.pancm.protobufB\010UserInfob\006proto3"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalBuildGeneratedFileFrom(descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[]{
+            }, assigner);
+    internal_static_UserMsg_descriptor =
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_UserMsg_fieldAccessorTable = new
+        com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UserMsg_descriptor,
+        new java.lang.String[]{"Id", "Name", "Age", "State",});
+  }
+
+  private UserInfo() {
+  }
+
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -14,13 +50,19 @@ public final class UserInfo {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+  getDescriptor() {
+    return descriptor;
+  }
+
   public interface UserMsgOrBuilder extends
       // @@protoc_insertion_point(interface_extends:UserMsg)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * ID  
+     * ID
      * </pre>
      *
      * <code>optional int32 id = 1;</code>
@@ -29,25 +71,26 @@ public final class UserInfo {
 
     /**
      * <pre>
-     * 姓名  
+     * 姓名
      * </pre>
      *
      * <code>optional string name = 2;</code>
      */
     java.lang.String getName();
+
     /**
      * <pre>
-     * 姓名  
+     * 姓名
      * </pre>
      *
      * <code>optional string name = 2;</code>
      */
     com.google.protobuf.ByteString
-        getNameBytes();
+    getNameBytes();
 
     /**
      * <pre>
-     * 年龄  
+     * 年龄
      * </pre>
      *
      * <code>optional int32 age = 3;</code>
@@ -56,20 +99,48 @@ public final class UserInfo {
 
     /**
      * <pre>
-     * 状态 
+     * 状态
      * </pre>
      *
      * <code>optional int32 state = 4;</code>
      */
     int getState();
   }
+
   /**
    * Protobuf type {@code UserMsg}
    */
-  public  static final class UserMsg extends
+  public static final class UserMsg extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:UserMsg)
       UserMsgOrBuilder {
+    public static final int ID_FIELD_NUMBER = 1;
+    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int AGE_FIELD_NUMBER = 3;
+    public static final int STATE_FIELD_NUMBER = 4;
+    private static final long serialVersionUID = 0L;
+    // @@protoc_insertion_point(class_scope:UserMsg)
+    private static final com.pancm.protobuf.UserInfo.UserMsg DEFAULT_INSTANCE;
+    private static final com.google.protobuf.Parser<UserMsg>
+        PARSER = new com.google.protobuf.AbstractParser<UserMsg>() {
+      public UserMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserMsg(input, extensionRegistry);
+      }
+    };
+
+    static {
+      DEFAULT_INSTANCE = new com.pancm.protobuf.UserInfo.UserMsg();
+    }
+
+    private int id_;
+    private volatile java.lang.Object name_;
+    private int age_;
+    private int state_;
+    private byte memoizedIsInitialized = -1;
+
     // Use UserMsg.newBuilder() to construct.
     private UserMsg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -81,13 +152,8 @@ public final class UserInfo {
       state_ = 0;
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
     @SuppressWarnings("unused")
-	private UserMsg(
+    private UserMsg(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -139,23 +205,112 @@ public final class UserInfo {
         makeExtensionsImmutable();
       }
     }
+
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+    getDescriptor() {
       return com.pancm.protobuf.UserInfo.internal_static_UserMsg_descriptor;
     }
 
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(com.pancm.protobuf.UserInfo.UserMsg prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    public static com.pancm.protobuf.UserInfo.UserMsg getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static com.google.protobuf.Parser<UserMsg> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
+    internalGetFieldAccessorTable() {
       return com.pancm.protobuf.UserInfo.internal_static_UserMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.pancm.protobuf.UserInfo.UserMsg.class, com.pancm.protobuf.UserInfo.UserMsg.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
     /**
      * <pre>
-     * ID  
+     * ID
      * </pre>
      *
      * <code>optional int32 id = 1;</code>
@@ -164,11 +319,9 @@ public final class UserInfo {
       return id_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object name_;
     /**
      * <pre>
-     * 姓名  
+     * 姓名
      * </pre>
      *
      * <code>optional string name = 2;</code>
@@ -178,25 +331,26 @@ public final class UserInfo {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
+        com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
       }
     }
+
     /**
      * <pre>
-     * 姓名  
+     * 姓名
      * </pre>
      *
      * <code>optional string name = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
+    getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         name_ = b;
@@ -206,11 +360,9 @@ public final class UserInfo {
       }
     }
 
-    public static final int AGE_FIELD_NUMBER = 3;
-    private int age_;
     /**
      * <pre>
-     * 年龄  
+     * 年龄
      * </pre>
      *
      * <code>optional int32 age = 3;</code>
@@ -219,11 +371,9 @@ public final class UserInfo {
       return age_;
     }
 
-    public static final int STATE_FIELD_NUMBER = 4;
-    private int state_;
     /**
      * <pre>
-     * 状态 
+     * 状态
      * </pre>
      *
      * <code>optional int32 state = 4;</code>
@@ -232,7 +382,6 @@ public final class UserInfo {
       return state_;
     }
 
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -243,7 +392,7 @@ public final class UserInfo {
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+        throws java.io.IOException {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
@@ -265,28 +414,27 @@ public final class UserInfo {
       size = 0;
       if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+            .computeInt32Size(1, id_);
       }
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (age_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, age_);
+            .computeInt32Size(3, age_);
       }
       if (state_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, state_);
+            .computeInt32Size(4, state_);
       }
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof com.pancm.protobuf.UserInfo.UserMsg)) {
         return super.equals(obj);
@@ -306,7 +454,7 @@ public final class UserInfo {
     }
 
     @SuppressWarnings("unchecked")
-	@java.lang.Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -326,72 +474,10 @@ public final class UserInfo {
       return hash;
     }
 
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.pancm.protobuf.UserInfo.UserMsg parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+    public Builder newBuilderForType() {
+      return newBuilder();
     }
 
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.pancm.protobuf.UserInfo.UserMsg prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -403,6 +489,16 @@ public final class UserInfo {
       Builder builder = new Builder(parent);
       return builder;
     }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserMsg> getParserForType() {
+      return PARSER;
+    }
+
+    public com.pancm.protobuf.UserInfo.UserMsg getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
     /**
      * Protobuf type {@code UserMsg}
      */
@@ -410,17 +506,10 @@ public final class UserInfo {
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:UserMsg)
         com.pancm.protobuf.UserInfo.UserMsgOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.pancm.protobuf.UserInfo.internal_static_UserMsg_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.pancm.protobuf.UserInfo.internal_static_UserMsg_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.pancm.protobuf.UserInfo.UserMsg.class, com.pancm.protobuf.UserInfo.UserMsg.Builder.class);
-      }
+      private int id_;
+      private java.lang.Object name_ = "";
+      private int age_;
+      private int state_;
 
       // Construct using com.pancm.protobuf.UserInfo.UserMsg.newBuilder()
       private Builder() {
@@ -432,11 +521,25 @@ public final class UserInfo {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return com.pancm.protobuf.UserInfo.internal_static_UserMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return com.pancm.protobuf.UserInfo.internal_static_UserMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.pancm.protobuf.UserInfo.UserMsg.class, com.pancm.protobuf.UserInfo.UserMsg.Builder.class);
+      }
+
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+            .alwaysUseFieldBuilders) {
         }
       }
+
       public Builder clear() {
         super.clear();
         id_ = 0;
@@ -451,7 +554,7 @@ public final class UserInfo {
       }
 
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      getDescriptorForType() {
         return com.pancm.protobuf.UserInfo.internal_static_UserMsg_descriptor;
       }
 
@@ -480,32 +583,38 @@ public final class UserInfo {
       public Builder clone() {
         return (Builder) super.clone();
       }
+
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           Object value) {
         return (Builder) super.setField(field, value);
       }
+
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
+
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
+
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
+
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.pancm.protobuf.UserInfo.UserMsg) {
-          return mergeFrom((com.pancm.protobuf.UserInfo.UserMsg)other);
+          return mergeFrom((com.pancm.protobuf.UserInfo.UserMsg) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -553,10 +662,9 @@ public final class UserInfo {
         return this;
       }
 
-      private int id_ ;
       /**
        * <pre>
-       * ID  
+       * ID
        * </pre>
        *
        * <code>optional int32 id = 1;</code>
@@ -564,37 +672,38 @@ public final class UserInfo {
       public int getId() {
         return id_;
       }
+
       /**
        * <pre>
-       * ID  
+       * ID
        * </pre>
        *
        * <code>optional int32 id = 1;</code>
        */
       public Builder setId(int value) {
-        
+
         id_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
-       * ID  
+       * ID
        * </pre>
        *
        * <code>optional int32 id = 1;</code>
        */
       public Builder clearId() {
-        
+
         id_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object name_ = "";
       /**
        * <pre>
-       * 姓名  
+       * 姓名
        * </pre>
        *
        * <code>optional string name = 2;</code>
@@ -611,18 +720,37 @@ public final class UserInfo {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <pre>
-       * 姓名  
+       * 姓名
+       * </pre>
+       *
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * 姓名
        * </pre>
        *
        * <code>optional string name = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getNameBytes() {
+      getNameBytes() {
         java.lang.Object ref = name_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           name_ = b;
@@ -631,39 +759,10 @@ public final class UserInfo {
           return (com.google.protobuf.ByteString) ref;
         }
       }
+
       /**
        * <pre>
-       * 姓名  
-       * </pre>
-       *
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 姓名  
-       * </pre>
-       *
-       * <code>optional string name = 2;</code>
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 姓名  
+       * 姓名
        * </pre>
        *
        * <code>optional string name = 2;</code>
@@ -671,19 +770,32 @@ public final class UserInfo {
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         name_ = value;
         onChanged();
         return this;
       }
 
-      private int age_ ;
       /**
        * <pre>
-       * 年龄  
+       * 姓名
+       * </pre>
+       *
+       * <code>optional string name = 2;</code>
+       */
+      public Builder clearName() {
+
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * 年龄
        * </pre>
        *
        * <code>optional int32 age = 3;</code>
@@ -691,37 +803,38 @@ public final class UserInfo {
       public int getAge() {
         return age_;
       }
+
       /**
        * <pre>
-       * 年龄  
+       * 年龄
        * </pre>
        *
        * <code>optional int32 age = 3;</code>
        */
       public Builder setAge(int value) {
-        
+
         age_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
-       * 年龄  
+       * 年龄
        * </pre>
        *
        * <code>optional int32 age = 3;</code>
        */
       public Builder clearAge() {
-        
+
         age_ = 0;
         onChanged();
         return this;
       }
 
-      private int state_ ;
       /**
        * <pre>
-       * 状态 
+       * 状态
        * </pre>
        *
        * <code>optional int32 state = 4;</code>
@@ -729,32 +842,35 @@ public final class UserInfo {
       public int getState() {
         return state_;
       }
+
       /**
        * <pre>
-       * 状态 
+       * 状态
        * </pre>
        *
        * <code>optional int32 state = 4;</code>
        */
       public Builder setState(int value) {
-        
+
         state_ = value;
         onChanged();
         return this;
       }
+
       /**
        * <pre>
-       * 状态 
+       * 状态
        * </pre>
        *
        * <code>optional int32 state = 4;</code>
        */
       public Builder clearState() {
-        
+
         state_ = 0;
         onChanged();
         return this;
       }
+
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -769,77 +885,6 @@ public final class UserInfo {
       // @@protoc_insertion_point(builder_scope:UserMsg)
     }
 
-    // @@protoc_insertion_point(class_scope:UserMsg)
-    private static final com.pancm.protobuf.UserInfo.UserMsg DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.pancm.protobuf.UserInfo.UserMsg();
-    }
-
-    public static com.pancm.protobuf.UserInfo.UserMsg getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<UserMsg>
-        PARSER = new com.google.protobuf.AbstractParser<UserMsg>() {
-      public UserMsg parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UserMsg(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<UserMsg> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UserMsg> getParserForType() {
-      return PARSER;
-    }
-
-    public com.pancm.protobuf.UserInfo.UserMsg getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserMsg_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserMsg_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\nUser.proto\"?\n\007UserMsg\022\n\n\002id\030\001 \001(\005\022\014\n\004n" +
-      "ame\030\002 \001(\t\022\013\n\003age\030\003 \001(\005\022\r\n\005state\030\004 \001(\005B\036\n" +
-      "\022com.pancm.protobufB\010UserInfob\006proto3"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
-    internal_static_UserMsg_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_UserMsg_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserMsg_descriptor,
-        new java.lang.String[] { "Id", "Name", "Age", "State", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
